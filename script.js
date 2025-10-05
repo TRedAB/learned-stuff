@@ -58,6 +58,6 @@ async function obtenerPokemon() {
   } catch (error) {
     pokeText.textContent = "Error al obtener el Pokémon";
     pokeImg.src =
-      "https://w7.pngwing.com/pngs/496/922/png-transparent-pokemon-go-pokemon-battle-revolution-pikachu-snorlax-pokemon-go-vertebrate-bird-pokemon.png";
+      "assets/error.png";
   }
 }
