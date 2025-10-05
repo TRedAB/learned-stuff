@@ -47,9 +47,11 @@ async function obtenerPokemon() {
     const descripcion = {
       id: "ID: " + data.id,
       altu : "Altura: " + data.height,
+      tips: `Tipos: ${data.types[0].type.name}${data.types[1] ? ' ' + data.types[1].type.name : ''}`   
     };
 
-    descTag.textContent = `${descripcion.id}\n${descripcion.altu}`;
+    descTag.textContent = `${descripcion.id}\n${descripcion.altu}\n${descripcion.tips}`
+    descTag.style.whiteSpace = "pre-line";
     const typoPoke = data.types[0].type.name;
     console.log(typoPoke);
     containerPok.style.backgroundColor = bgTipos[typoPoke];
