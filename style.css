@@ -1,0 +1,25 @@
+#conPoke{
+    padding: 5px;
+    margin: auto;
+    width: fit-content;
+    display: flex;
+    border: 1px solid black;
+    align-items: center;
+    align-content: center;
+    display: flex;
+    flex-direction: column;
+}
+body {
+    background-color: blanchedalmond ;
+}
+#poke {
+    height: auto;
+    width: 200px;
+}
+div p{
+    margin: 0px 0px 5px 0px;
+    color: white;
+    text-align: center;
+    border: 1px solid black;
+    width: 100%;
+}
