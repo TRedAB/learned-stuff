@@ -77,7 +77,7 @@ async function obtenerPokemon() {
 const containerCata = document.getElementById("containerCatalog")
 
 async function catalogPokes() {
-  const url = "https://pokeapi.co/api/v2/pokemon?limit=1302"
+  const url = "https://pokeapi.co/api/v2/pokemon?limit=151"
   const respuesta2 = await fetch(url)
   const datos = await respuesta2.json()
   const pokemons = datos.results
@@ -107,7 +107,7 @@ async function catalogPokes() {
         obtenerPokemon();
       });
     } catch (error) {
-      console.log("fuck");
+      console.log("Aint working");
       
     }
   }
