@@ -9,7 +9,20 @@ header{
 }
 
 
+#containerCatalog{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: aquamarine;
+    width: 100vh;
+    height: 10%;
+}
 
+.pokeIndividual {
+    background-color: blueviolet;
+    margin: 2px;
+}
 
 #conPoke{
     padding: 5px;

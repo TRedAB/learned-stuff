@@ -49,8 +49,8 @@ async function obtenerPokemon() {
 
     const descripcion = {
       id: "ID: " + data.id,
-      altu : "Altura: " + data.height,
-      tips: `Tipos: ${data.types[0].type.name} ${data.types[1] ? ' ' + data.types[1].type.name : ''}`   
+      altu: "Altura: " + data.height,
+      tips: `Tipos: ${data.types[0].type.name} ${data.types[1] ? ' ' + data.types[1].type.name : ''}`
     };
 
     descTag.textContent = `${descripcion.id}\n${descripcion.altu}\n${descripcion.tips}`
@@ -77,19 +77,39 @@ async function obtenerPokemon() {
 const containerCata = document.getElementById("containerCatalog")
 
 async function catalogPokes() {
-  const url = "https://pokeapi.co/api/v2/pokemon/"
+  const url = "https://pokeapi.co/api/v2/pokemon?limit=1302"
   const respuesta2 = await fetch(url)
   const datos = await respuesta2.json()
-  const pokemons = datos.respuesta2
-  pokemons.forEach(element => {
-    const containerCuadro = document.createElement('div')
-    containerCuadro.classList.add('pokeIndividual')
-    const spritePoke = document.createElement('img')
-    spritePoke = datos.sprites.front_default
-    containerCuadro.appendChild(spritePoke)
-    
-  });
-  console.log(datos);
-  
+  const pokemons = datos.results
+
+  for (const element of pokemons) {
+    try {
+      const pokeIndivCatalog = await fetch(element.url);
+      const datosIndividuales = await pokeIndivCatalog.json();
+
+      const containerCuadro = document.createElement('div')
+      containerCuadro.classList.add('pokeIndividual')
+      const nameIndividual = document.createElement("p")
+      nameIndividual.textContent = element.name
+      const spritePoke = document.createElement('img')
+      spritePoke.src = datosIndividuales.sprites.front_default
+      const idIndividual = document.createElement("p")
+
+      idIndividual.textContent = `ID: ${datosIndividuales.id}`
+
+      containerCuadro.appendChild(nameIndividual)
+      containerCuadro.appendChild(spritePoke)
+      containerCata.appendChild(containerCuadro)
+      containerCuadro.appendChild(idIndividual)
+      
+      containerCuadro.addEventListener('click', () => {
+        document.getElementById("inputPoke").value = element.name;
+        obtenerPokemon();
+      });
+    } catch (error) {
+      console.log("fuck");
+      
+    }
+  }
 }
 catalogPokes()
