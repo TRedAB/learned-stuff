@@ -3,7 +3,7 @@ const nombrePoke = document.getElementById("namePoke");
 const pokeText = document.getElementById("defaultText");
 const pokeImg = document.getElementById("poke");
 const loadingDef = (document.getElementById("poke").src =
-  "https://imgs.search.brave.com/7iVraPqy7eVIf7lcVuIALEHUeO6w3X5llUFdoCt0XlU/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS50ZW5vci5jb20v/dXB5MENaNkMwSTBB/QUFBbS9lZXZlZS1w/b2tlbW9uLndlYnA");
+  "assets/defaultLoading.gif");
 const descTag = document.getElementById("descPoke");
 /* const defaultStyle = {
   fondo : containerPok.style.backgroundColor = "#FF00FF"
