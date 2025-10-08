@@ -35,16 +35,20 @@ pokeText.textContent = "Ingresa un poke a buscar";
 document.getElementById("btn2").addEventListener("click", obtenerPokemon);
 
 async function obtenerPokemon() {
+  
+  pokeText.textContent = "Ingresa un poke a buscar"
   const pok = document.getElementById("inputPoke").value.trim().toLowerCase();
   try {
+    pokeImg.classList.remove('errorPoke')
+
     const respuesta = await fetch("https://pokeapi.co/api/v2/pokemon/" + pok);
     const data = await respuesta.json();
     console.log(data);
     nombrePoke.textContent = data.name;
     if (document.getElementById("checkShiny").checked) {
-      document.getElementById("poke").src = data.sprites.front_shiny;
+      pokeImg.src = data.sprites.front_shiny;
     } else {
-      document.getElementById("poke").src = data.sprites.front_default;
+      pokeImg.src = data.sprites.front_default;
     }
 
     const descripcion = {
@@ -62,14 +66,24 @@ async function obtenerPokemon() {
     } else {
       containerPok.style.backgroundImage = `linear-gradient(to right, ${bgTipos[typoPoke]}, #000000ff)`
     }
+    if (!containerPok.classList.contains('pokeActivo')) {
+      containerPok.classList.add('pokeActivo');
+      nombrePoke.classList.add('descActivo');
+      descTag.classList.add('descActivo');
+    }
+
 
   } catch (error) {
+    pokeImg.classList.add("errorPoke")
     nombrePoke.textContent = "";
     descTag.textContent = "";
     containerPok.style.backgroundImage = "none"
-    containerPok.style.backgroundColor = "#f5d498ff";
+    containerPok.style.backgroundColor = "none";
     pokeText.textContent = "Error al obtener el Pokémon";
     pokeImg.src = "assets/error.png";
+    containerPok.classList.remove('pokeActivo');
+    nombrePoke.classList.remove('descActivo');
+    descTag.classList.remove('descActivo');
   }
 }
 
@@ -90,10 +104,12 @@ async function catalogPokes() {
       const containerCuadro = document.createElement('div')
       containerCuadro.classList.add('pokeIndividual')
       const nameIndividual = document.createElement("p")
+      nameIndividual.classList.add('nameIndividual')
       nameIndividual.textContent = element.name
       const spritePoke = document.createElement('img')
       spritePoke.src = datosIndividuales.sprites.front_default
       const idIndividual = document.createElement("p")
+      idIndividual.classList.add('idIndividual')
 
       idIndividual.textContent = `ID: ${datosIndividuales.id}`
 
@@ -101,14 +117,14 @@ async function catalogPokes() {
       containerCuadro.appendChild(spritePoke)
       containerCata.appendChild(containerCuadro)
       containerCuadro.appendChild(idIndividual)
-      
+
       containerCuadro.addEventListener('click', () => {
         document.getElementById("inputPoke").value = element.name;
         obtenerPokemon();
       });
     } catch (error) {
       console.log("Aint working");
-      
+
     }
   }
 }
