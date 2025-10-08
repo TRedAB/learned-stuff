@@ -1,5 +1,5 @@
 header{
-    background-color: bisque;
+    background-color: #FAFDD6;
     width: 100%;
     height: 15%;
     border-radius: 1rem;
@@ -9,8 +9,9 @@ header{
 }
 
 #inputPoke {
-    width: 30vh;
+    width: 40%;
 }
+
 #containerCatalog{
     justify-content: center;
     margin-top: 30px;
@@ -22,6 +23,11 @@ header{
     height: 10%;
 }
 
+.errorPoke{
+    height: 300px;
+    width: 300px !important;
+}
+
 .pokeIndividual {
     border-radius: 8px;
     padding: 10px;
@@ -30,31 +36,58 @@ header{
     align-content: center;
     width: 150px;
     flex: 1 1 auto;
-    background-color: blueviolet;
+    background-color: #AED6CF;
+    box-shadow: 5px 5px 15px rgb(0, 0, 0);
 }
 
 #conPoke{
-    padding: 5px;
+    padding: 10px;
     margin: auto;
     width: fit-content;
     display: flex;
-    border: 1px solid black;
     align-items: center;
     align-content: center;
     display: flex;
     flex-direction: column;
 }
+
+.pokeActivo {
+    border: 1px solid black;
+    box-shadow: 5px 5px 15px rgb(0, 0, 0);
+    border-radius: 8px;
+}
+
+.descActivo {
+    
+    box-shadow: 1px 1px 1px rgb(0, 0, 0);
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
 body {
-    background-color: blanchedalmond ;
+    color: rgb(255, 255, 255);
+    font-family: 'IBM Plex Mono', monospace, sans-serif;
+    background-color: #647FBC ;
 }
 #poke {
     height: auto;
     width: 200px;
 }
-div p{
+#namePoke, #descPoke{
+    padding: 5px 0px;
     margin: 0px 0px 5px 0px;
     color: white;
     text-align: center;
+    width: 100%;
+}
+
+.nameIndividual, .idIndividual {
+    box-shadow: 1px 1px 1px rgb(0, 0, 0);
+    border-radius: 10px;
+    margin: 0px 0px 5px 0px;
+    color: rgb(255, 255, 255);
+    text-align: center;
     border: 1px solid black;
     width: 100%;
+    background-color: #647FBC;
 }
